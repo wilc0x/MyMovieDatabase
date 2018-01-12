@@ -1,0 +1,46 @@
+<?php
+
+$title = 'My movies';
+$this->headTitle($title);
+$this->headScript()->appendFile('/js/jquery.tablesorter.js');
+$this->headScript()->appendFile('/js/scripts.js');
+
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<div class="row">
+	<div class="col-md-2">
+		<a href="<?= $this->url('movie', ['action' => 'add']) ?>">Add new movie</a>
+	</div>
+	<div id="movieDescription" class="col-md-7"></div>
+	<div class="col-md-3">
+		<label>Search</label>
+		<input id="movieSearch" type=text placeholder="Enter search text"></input>
+	</div>
+</div>
+
+<table id="movieTable" class="table">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Genre</th>
+			<th>Actors</th>
+			<th>Rating</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($movies as $movie) : ?>
+			<tr class="js-movie">
+				<td class="js-searchable"><a class="js-get-description"><?= $this->escapeHtml($movie->title) ?></a></td>
+				<td class="js-searchable"><?= $this->escapeHtml($movie->genre) ?></td>
+				<td class="js-searchable"><?= $this->escapeHtml($movie->actors) ?></td>
+				<td><?= $this->escapeHtml($movie->rating) ?></td>
+				<td>
+					<a href="<?= $this->url('movie', ['action' => 'edit', 'id' => $movie->id]) ?>">Edit</a>
+					<a href="<?= $this->url('movie', ['action' => 'delete', 'id' => $movie->id]) ?>">Delete</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
