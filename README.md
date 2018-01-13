@@ -1,18 +1,15 @@
 Movie Database v1.4
 
-first, run:
-$ composer install
+To run--
+1. ensure "extension=intl" is uncommented in php.ini
+2. to load dependencies, execute command from root project directory: $ composer install
+3. to load initial database values, execute command from root project directory: $ php data/load_db.php
+4. to launch, execute command from root project directory: $ php -S 0.0.0.0:8080 -t public index.php
 
-to load initial database values, execute command from root project directory:
-$ php data/load_db.php
-
-to launch project:
-$ php -S 0.0.0.0:8080 -t public index.php
 
 For this project I opted to learn a little bit about Zend Framework 3.
 
 Features:
-
 - basic CRUD functionality for entering and modifying movie data
 - local storage with Sqlite
 - table rows sortable by column
