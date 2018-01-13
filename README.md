@@ -1,5 +1,8 @@
 Movie Database v1.4
 
+first, run:
+$ composer install
+
 to load initial database values, execute command from root project directory:
 $ php data/load_db.php
 
